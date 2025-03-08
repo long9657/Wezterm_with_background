@@ -46,7 +46,7 @@ local function pick_random_background(folder)
     end
 end
 local user_home = get_user_home()
-local brightness = 0.03
+local brightness = 0.05
 local background_folder = user_home .. '/.config/bg'
 -- This is where you actually apply your config choices
 
@@ -61,7 +61,7 @@ config.window_padding = {
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
-config.font = wezterm.font 'ComicShannsMono Nerd Font'
+config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 'Book' })
 config.font_size = 18
 config.front_end = "OpenGL"
 config.prefer_egl = true
