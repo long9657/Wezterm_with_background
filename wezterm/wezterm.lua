@@ -46,7 +46,7 @@ local function pick_random_background(folder)
     end
 end
 local user_home = get_user_home()
-local brightness = 0.05
+local brightness = 0.1
 local background_folder = user_home .. '/.config/bg'
 -- This is where you actually apply your config choices
 
