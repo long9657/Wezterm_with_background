@@ -11,7 +11,8 @@ config.window_padding = {
 	top = "0",
 	bottom = "0",
 }
-config.colors = require("cyberdream")
+-- config.colors = require("cyberdream")
+config.color_scheme = "Tokyo Night"
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_decorations = "NONE"
 config.hide_tab_bar_if_only_one_tab = true
@@ -20,7 +21,7 @@ config.font_size = 14
 config.front_end = "OpenGL"
 config.prefer_egl = true
 config.max_fps = 144
-config.window_background_opacity = 0.9 -- Set window opacity to 95% for better readability
+config.window_background_opacity = 0.95 -- Set window opacity to 95% for better readability
 
 -- and finally, return the configuration to wezterm
 return config
