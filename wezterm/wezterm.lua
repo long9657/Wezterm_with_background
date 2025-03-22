@@ -1,7 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
-local brightness = 0.1
+local brightness = 0.03
 -- This will hold the configuration.
 -- This is where you actually apply your config choices
 local function get_user_home()
@@ -10,8 +10,11 @@ local function get_user_home()
 	return home_dir
 end
 local user_home = get_user_home()
-local bg_image = user_home .. "/.config/bg/f.jpg"
+local bg_image = user_home .. "/.config/wezterm/bg/f.jpg"
+local gpus = wezterm.gui.enumerate_gpus()
 
+config.webgpu_preferred_adapter = gpus[1]
+config.front_end = "WebGpu"
 -- For example, changing the color scheme:
 config.window_padding = {
 	left = "0",
@@ -19,23 +22,28 @@ config.window_padding = {
 	top = "0",
 	bottom = "0",
 }
--- config.colors = require("cyberdream")
 config.color_scheme = "Tokyo Night"
+-- config.colors = require("cyberdream")
+
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
-config.font = wezterm.font("ComicShannsMono Nerd Font", { weight = "Regular" })
-config.font_size = 14
-config.front_end = "OpenGL"
-config.prefer_egl = true
+
+config.font = wezterm.font("ComicShannsMono Nerd Font")
+-- config.font = wezterm.font("Iosevka Nerd Font")
+-- config.font = wezterm.font("Hack Nerd Font")
+-- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Medium", stretch = "Expanded" })
+
+config.font_size = 18
 config.max_fps = 144
 -- config.window_background_opacity = 0.95 -- Set window opacity to 95% for better readability
+
 config.window_background_image = bg_image
-config.foreground_text_hsb = {
-	hue = 1.0,
-	saturation = 1.2,
-	brightness = 1.5,
-}
+-- config.foreground_text_hsb = {
+-- 	hue = 1.0,
+-- 	saturation = 1.2,
+-- 	brightness = 1.5,
+-- }
 config.window_background_image_hsb = {
 	-- Darken the background image by reducing it to 1/3rd
 	brightness = brightness,
@@ -47,12 +55,13 @@ config.window_background_image_hsb = {
 	-- You can adjust the saturation also.
 	saturation = 0.8,
 }
+
 config.keys = {
-	{
-		key = "L",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.OpenLinkAtMouseCursor,
-	},
+	-- {
+	-- 	key = "L",
+	-- 	mods = "CTRL|SHIFT",
+	-- 	action = wezterm.action.OpenLinkAtMouseCursor,
+	-- },
 	{
 		key = ">",
 		mods = "CTRL|SHIFT",
