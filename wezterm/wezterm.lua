@@ -1,7 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
-local brightness = 0.03
+local brightness = 0.1
 -- This will hold the configuration.
 -- This is where you actually apply your config choices
 local function get_user_home()
@@ -22,6 +22,7 @@ config.window_padding = {
 	top = "0",
 	bottom = "0",
 }
+
 config.color_scheme = "Tokyo Night"
 -- config.colors = require("cyberdream")
 
@@ -57,11 +58,11 @@ config.window_background_image_hsb = {
 }
 
 config.keys = {
-	-- {
-	-- 	key = "L",
-	-- 	mods = "CTRL|SHIFT",
-	-- 	action = wezterm.action.OpenLinkAtMouseCursor,
-	-- },
+	{
+		key = "G",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.OpenLinkAtMouseCursor,
+	},
 	{
 		key = ">",
 		mods = "CTRL|SHIFT",
