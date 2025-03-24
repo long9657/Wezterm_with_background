@@ -1,21 +1,19 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
-local brightness = 0.1
 -- This will hold the configuration.
 -- This is where you actually apply your config choices
-local function get_user_home()
-	-- Check if the OS is Windows or Unix-based
-	local home_dir = os.getenv("HOME") or os.getenv("USERPROFILE") or os.getenv("HOMEDRIVE") .. os.getenv("HOMEPATH")
-	return home_dir
-end
-local user_home = get_user_home()
-local bg_image = user_home .. "/.config/wezterm/bg/f.jpg"
-local gpus = wezterm.gui.enumerate_gpus()
 
-config.webgpu_preferred_adapter = gpus[1]
-config.front_end = "WebGpu"
--- For example, changing the color scheme:
+local brightness = 0.1
+
+-- Check if the OS is Windows or Unix-based
+local home_dir = os.getenv("HOME") or os.getenv("USERPROFILE")
+local bg_image = home_dir .. "/.config/wezterm/bg/f.jpg"
+
+-- local gpus = wezterm.gui.enumerate_gpus()
+-- config.webgpu_preferred_adapter = gpus[1]
+-- config.front_end = "WebGpu"
+
 config.window_padding = {
 	left = "0",
 	right = "0",
@@ -23,6 +21,7 @@ config.window_padding = {
 	bottom = "0",
 }
 
+-- For example, changing the color scheme:
 config.color_scheme = "Tokyo Night"
 -- config.colors = require("cyberdream")
 
@@ -30,32 +29,41 @@ config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 
-config.font = wezterm.font("ComicShannsMono Nerd Font")
+-- config.font = wezterm.font("ComicShannsMono Nerd Font")
 -- config.font = wezterm.font("Iosevka Nerd Font")
--- config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font("Hack Nerd Font")
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Medium", stretch = "Expanded" })
 
-config.font_size = 18
+config.front_end = "OpenGL"
+config.prefer_egl = true
 config.max_fps = 144
--- config.window_background_opacity = 0.95 -- Set window opacity to 95% for better readability
+config.animation_fps = 1
 
-config.window_background_image = bg_image
+config.default_cursor_style = "BlinkingBlock"
+config.cursor_blink_rate = 500
+
+config.term = "xterm-256color" -- Set the terminal type
+config.font_size = 18
+config.window_background_opacity = 0.8 -- Set window opacity to 95% for better readability
+
 -- config.foreground_text_hsb = {
 -- 	hue = 1.0,
 -- 	saturation = 1.2,
 -- 	brightness = 1.5,
 -- }
-config.window_background_image_hsb = {
-	-- Darken the background image by reducing it to 1/3rd
-	brightness = brightness,
 
-	-- You can adjust the hue by scaling its value.
-	-- a multiplier of 1.0 leaves the value unchanged.
-	hue = 1.0,
-
-	-- You can adjust the saturation also.
-	saturation = 0.8,
-}
+-- config.window_background_image = bg_image
+-- config.window_background_image_hsb = {
+-- 	-- Darken the background image by reducing it to 1/3rd
+-- 	brightness = brightness,
+--
+-- 	-- You can adjust the hue by scaling its value.
+-- 	-- a multiplier of 1.0 leaves the value unchanged.
+-- 	hue = 1.0,
+--
+-- 	-- You can adjust the saturation also.
+-- 	saturation = 0.8,
+-- }
 
 config.keys = {
 	{
