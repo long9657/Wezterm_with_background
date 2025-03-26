@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 -- This will hold the configuration.
 -- This is where you actually apply your config choices
 
-local brightness = 0.1
+local brightness = 0.03
 
 -- Check if the OS is Windows or Unix-based
 local home_dir = os.getenv("HOME") or os.getenv("USERPROFILE")
@@ -21,20 +21,20 @@ config.window_padding = {
 	bottom = "0",
 }
 -- For example, changing the color scheme:
--- config.color_scheme = "tokyonight"
-config.colors = require("cyberdream")
+config.color_scheme = "Tokyo Night"
+-- config.colors = require("cyberdream")
 
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 
--- config.font = wezterm.font("ComicShannsMono Nerd Font")
-config.font = wezterm.font("Iosevka Nerd Font")
+config.font = wezterm.font("ComicShannsMono Nerd Font")
+-- config.font = wezterm.font("Iosevka Nerd Font")
 -- config.font = wezterm.font("Hack Nerd Font")
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Medium", stretch = "Expanded" })
+-- config.font = wezterm.font("Fixedsys Excelsior")
 
 config.front_end = "OpenGL"
-config.prefer_egl = true
 config.max_fps = 144
 config.animation_fps = 1
 config.default_cursor_style = "BlinkingBlock"
@@ -43,7 +43,7 @@ config.cursor_blink_rate = 500
 config.initial_cols = 80
 config.term = "xterm-256color" -- Set the terminal type
 config.font_size = 18
-config.window_background_opacity = 0.9 -- Set window opacity to 95% for better readability
+config.window_background_opacity = 0.95 -- Set window opacity to 95% for better readability
 
 -- config.foreground_text_hsb = {
 -- 	hue = 1.0,
