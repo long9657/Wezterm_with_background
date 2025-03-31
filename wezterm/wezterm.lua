@@ -20,30 +20,26 @@ config.window_padding = {
 	top = "0",
 	bottom = "0",
 }
--- For example, changing the color scheme:
+config.term = "xterm-256color" -- Set the terminal type
 config.color_scheme = "Tokyo Night"
+-- For example, changing the color scheme:
 -- config.colors = require("cyberdream")
-
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
-
 config.font = wezterm.font("ComicShannsMono Nerd Font")
 -- config.font = wezterm.font("Iosevka Nerd Font")
 -- config.font = wezterm.font("Hack Nerd Font")
--- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Medium", stretch = "Expanded" })
+-- config.font = wezterm.font("Incoslanta Nerd Font", { weight = "Light", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior")
 
 config.front_end = "OpenGL"
 config.max_fps = 144
-config.animation_fps = 1
-config.default_cursor_style = "BlinkingBlock"
-config.cursor_blink_rate = 500
-
 config.initial_cols = 80
-config.term = "xterm-256color" -- Set the terminal type
-config.font_size = 18
-config.window_background_opacity = 0.95 -- Set window opacity to 95% for better readability
+config.font_size = 16
+config.window_background_opacity = 0.75 -- Set window opacity to 95% for better readability
+-- config.window_background_opacity = 0.7
+-- config.win32_system_backdrop = "Acrylic"
 
 -- config.foreground_text_hsb = {
 -- 	hue = 1.0,
