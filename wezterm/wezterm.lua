@@ -28,21 +28,21 @@ config.window_padding = {
 }
 
 config.term = "xterm-256color" -- Set the terminal type
--- config.color_scheme = "Tokyo Night"
+config.color_scheme = "Tokyo Night Moon"
 -- For example, changing the color scheme:
 -- config.colors = require("cyberdream")
-config.color_scheme = "Shades of Purple (base16)"
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 
+config.line_height = 1.2
 config.font = wezterm.font("ComicShanns Nerd Font")
 -- config.font = wezterm.font("Iosevka Nerd Font")
 -- config.font = wezterm.font("Hack Nerd Font")
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior")
-config.font_size = 16
+config.font_size = 18
 
 -- config.window_background_opacity = 0.75 -- Set window opacity to 95% for better readability
 config.window_background_opacity = 0.75
@@ -59,11 +59,11 @@ config.win32_system_backdrop = "Acrylic"
 -- 	-- You can adjust the saturation also.
 -- 	saturation = 1.0,
 -- }
--- -- config.foreground_text_hsb = {
--- -- 	hue = 1.0,
--- -- 	saturation = 1.2,
--- -- 	brightness = 1.5,
--- -- }
+-- config.foreground_text_hsb = {
+-- 	hue = 1.0,
+-- 	saturation = 1.2,
+-- 	brightness = 1.5,
+-- }
 config.keys = {
 	{
 		key = "b",
