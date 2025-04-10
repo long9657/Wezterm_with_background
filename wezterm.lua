@@ -42,8 +42,7 @@ config.font = wezterm.font("ComicShanns Nerd Font")
 -- config.font = wezterm.font("Hack Nerd Font")
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior")
-config.font_size = 16
-
+config.font_size = 14
 -- config.window_background_opacity = 0.75 -- Set window opacity to 95% for better readability
 config.window_background_opacity = 0.75
 config.win32_system_backdrop = "Acrylic"
