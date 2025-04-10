@@ -37,14 +37,15 @@ config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 
-config.font = wezterm.font("ComicShannsMono Nerd Font")
+-- config.font = wezterm.font("ComicShannsMono Nerd Font")
 -- config.font = wezterm.font("Iosevka Nerd Font")
--- config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font("Hack Nerd Font")
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior")
-config.font_size = 16
+config.font_size = 18
+config.line_height = 1.2
 -- config.window_background_opacity = 0.95 -- Set window opacity to 95% for better readability
-config.window_background_opacity = 0.75
+config.window_background_opacity = 0.5
 config.win32_system_backdrop = "Acrylic"
 -- config.window_background_image = bg_image
 -- config.window_background_image_hsb = {
