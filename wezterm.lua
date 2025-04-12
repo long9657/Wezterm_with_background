@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
+local act = wezterm.action
 -- This will hold the configuration.
 -- This is where you actually apply your config choices
 
@@ -28,22 +29,22 @@ config.window_padding = {
 }
 
 config.term = "xterm-256color" -- Set the terminal type
--- config.color_scheme = "Tokyo Night"
+config.color_scheme = "Tokyo Night"
 -- For example, changing the color scheme:
-config.colors = require("cyberdream")
+-- config.colors = require("cyberdream")
 -- config.color_scheme = "Shades of Purple (base16)"
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
-
+config.cell_width = 0.9
 -- config.font = wezterm.font("ComicShannsMono Nerd Font")
 -- config.font = wezterm.font("Iosevka Nerd Font")
 config.font = wezterm.font("Hack Nerd Font")
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior")
 config.font_size = 18
-config.line_height = 1.2
+-- config.line_height = 1.2
 -- config.window_background_opacity = 0.95 -- Set window opacity to 95% for better readability
 config.window_background_opacity = 0.5
 config.win32_system_backdrop = "Acrylic"
@@ -65,6 +66,69 @@ config.win32_system_backdrop = "Acrylic"
 -- -- 	brightness = 1.5,
 -- -- }
 config.keys = {
+	{ key = "9", mods = "CTRL", action = act.PaneSelect },
+	{
+		key = "h",
+		mods = "CTRL|SHIFT|ALT",
+		action = wezterm.action.SplitPane({
+			direction = "Right",
+			size = { Percent = 50 },
+		}),
+	},
+	{
+		key = "v",
+		mods = "CTRL|SHIFT|ALT",
+		action = wezterm.action.SplitPane({
+			direction = "Down",
+			size = { Percent = 50 },
+		}),
+	},
+	{
+		key = "H",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "L",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Right"),
+	},
+
+	{
+		key = "K",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "J",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Down"),
+	},
+	{
+		key = "G",
+		mods = "CTRL|SHIFT",
+		action = act.OpenLinkAtMouseCursor,
+	},
+	{
+		key = "U",
+		mods = "CTRL|SHIFT",
+		action = act.AdjustPaneSize({ "Left", 5 }),
+	},
+	{
+		key = "I",
+		mods = "CTRL|SHIFT",
+		action = act.AdjustPaneSize({ "Down", 5 }),
+	},
+	{
+		key = "O",
+		mods = "CTRL|SHIFT",
+		action = act.AdjustPaneSize({ "Up", 5 }),
+	},
+	{
+		key = "P",
+		mods = "CTRL|SHIFT",
+		action = act.AdjustPaneSize({ "Right", 5 }),
+	},
 	{
 		key = "b",
 		mods = "CTRL|SHIFT",
@@ -74,11 +138,6 @@ config.keys = {
 				window_background_image = bg_image,
 			})
 		end),
-	},
-	{
-		key = "G",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.OpenLinkAtMouseCursor,
 	},
 	{
 		key = ">",
