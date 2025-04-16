@@ -5,21 +5,22 @@ local act = wezterm.action
 -- This will hold the configuration.
 -- This is where you actually apply your config choices
 
-local brightness = 0.03
+local brightness = 0.1
 
 -- Check if the OS is Windows or Unix-based
 local background_folder = wezterm.config_dir .. "/bg"
-local bg_image = wezterm.config_dir .. "/bg/j.jpg"
+local bg_image = wezterm.config_dir .. "/bg/f.jpg"
 local function pick_random_background(folder)
 	local file_name = string.char(math.random(string.byte("d"), string.byte("j")))
 	return folder .. "/" .. file_name .. ".jpg"
 end
 
--- local gpus = wezterm.gui.enumerate_gpus()
--- config.webgpu_preferred_adapter = gpus[1]
--- config.front_end = "WebGpu"
-config.front_end = "OpenGL"
-config.max_fps = 144
+local gpus = wezterm.gui.enumerate_gpus()
+config.webgpu_preferred_adapter = gpus[2]
+config.front_end = "WebGpu"
+-- config.front_end = "OpenGL"
+-- config.prefer_egl = true
+config.max_fps = 120
 
 config.window_padding = {
 	left = "0",
@@ -29,10 +30,10 @@ config.window_padding = {
 }
 
 config.term = "xterm-256color" -- Set the terminal type
-config.color_scheme = "Tokyo Night"
+-- config.color_scheme = "Tokyo Night"
 -- For example, changing the color scheme:
 -- config.colors = require("cyberdream")
--- config.color_scheme = "Shades of Purple (base16)"
+config.color_scheme = "Shades of Purple (base16)"
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 
 config.window_decorations = "RESIZE"
@@ -43,28 +44,28 @@ config.cell_width = 0.9
 config.font = wezterm.font("Hack Nerd Font")
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior")
-config.font_size = 14
+config.font_size = 16
 -- config.line_height = 1.2
 -- config.window_background_opacity = 0.95 -- Set window opacity to 95% for better readability
-config.window_background_opacity = 0.5
-config.win32_system_backdrop = "Acrylic"
--- config.window_background_image = bg_image
--- config.window_background_image_hsb = {
--- 	-- Darken the background image by reducing it to 1/3rd
--- 	brightness = brightness,
---
--- 	-- You can adjust the hue by scaling its value.
--- 	-- a multiplier of 1.0 leaves the value unchanged.
--- 	hue = 1.0,
---
--- 	-- You can adjust the saturation also.
--- 	saturation = 1.0,
--- }
--- -- config.foreground_text_hsb = {
--- -- 	hue = 1.0,
--- -- 	saturation = 1.2,
--- -- 	brightness = 1.5,
--- -- }
+-- config.window_background_opacity = 0.5
+-- config.win32_system_backdrop = "Acrylic"
+config.window_background_image = bg_image
+config.window_background_image_hsb = {
+	-- Darken the background image by reducing it to 1/3rd
+	brightness = brightness,
+
+	-- You can adjust the hue by scaling its value.
+	-- a multiplier of 1.0 leaves the value unchanged.
+	hue = 1.0,
+
+	-- You can adjust the saturation also.
+	saturation = 0.8,
+}
+config.foreground_text_hsb = {
+	hue = 1.0,
+	saturation = 1.2,
+	brightness = 1.5,
+}
 config.keys = {
 	{ key = "9", mods = "CTRL", action = act.PaneSelect },
 	{
@@ -83,27 +84,27 @@ config.keys = {
 			size = { Percent = 50 },
 		}),
 	},
-	{
-		key = "H",
-		mods = "CTRL|SHIFT",
-		action = act.ActivatePaneDirection("Left"),
-	},
-	{
-		key = "L",
-		mods = "CTRL|SHIFT",
-		action = act.ActivatePaneDirection("Right"),
-	},
-
-	{
-		key = "K",
-		mods = "CTRL|SHIFT",
-		action = act.ActivatePaneDirection("Up"),
-	},
-	{
-		key = "J",
-		mods = "CTRL|SHIFT",
-		action = act.ActivatePaneDirection("Down"),
-	},
+	-- {
+	-- 	key = "H",
+	-- 	mods = "CTRL|SHIFT",
+	-- 	action = act.ActivatePaneDirection("Left"),
+	-- },
+	-- {
+	-- 	key = "L",
+	-- 	mods = "CTRL|SHIFT",
+	-- 	action = act.ActivatePaneDirection("Right"),
+	-- },
+	--
+	-- {
+	-- 	key = "K",
+	-- 	mods = "CTRL|SHIFT",
+	-- 	action = act.ActivatePaneDirection("Up"),
+	-- },
+	-- {
+	-- 	key = "J",
+	-- 	mods = "CTRL|SHIFT",
+	-- 	action = act.ActivatePaneDirection("Down"),
+	-- },
 	{
 		key = "G",
 		mods = "CTRL|SHIFT",
