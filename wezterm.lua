@@ -5,13 +5,13 @@ local act = wezterm.action
 -- This will hold the configuration.
 -- This is where you actually apply your config choices
 
-local brightness = 0.1
+local brightness = 0.3
 
 -- Check if the OS is Windows or Unix-based
 local background_folder = wezterm.config_dir .. "/bg"
-local bg_image = wezterm.config_dir .. "/bg/f.jpg"
+local bg_image = wezterm.config_dir .. "/bg/k.jpg"
 local function pick_random_background(folder)
-	local file_name = string.char(math.random(string.byte("d"), string.byte("j")))
+	local file_name = string.char(math.random(string.byte("d"), string.byte("l")))
 	return folder .. "/" .. file_name .. ".jpg"
 end
 
@@ -20,28 +20,33 @@ config.webgpu_preferred_adapter = gpus[2]
 config.front_end = "WebGpu"
 -- config.front_end = "OpenGL"
 -- config.prefer_egl = true
-config.max_fps = 120
 
+-- Performance Settings
+config.max_fps = 144
+config.animation_fps = 60
+config.cursor_blink_rate = 250
+
+-- Window Configuration
 config.window_padding = {
 	left = "0",
 	right = "0",
 	top = "0",
 	bottom = "0",
 }
-
+config.window_close_confirmation = "NeverPrompt"
 config.term = "xterm-256color" -- Set the terminal type
 -- config.color_scheme = "Tokyo Night"
 -- For example, changing the color scheme:
 -- config.colors = require("cyberdream")
 config.color_scheme = "Shades of Purple (base16)"
 config.default_prog = { "pwsh.exe", "-NoLogo" }
-
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.cell_width = 0.9
+
 -- config.font = wezterm.font("ComicShannsMono Nerd Font")
--- config.font = wezterm.font("Iosevka Nerd Font")
-config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font("Iosevka Nerd Font")
+-- config.font = wezterm.font("Hack Nerd Font")
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior")
 config.font_size = 16
@@ -59,13 +64,13 @@ config.window_background_image_hsb = {
 	hue = 1.0,
 
 	-- You can adjust the saturation also.
-	saturation = 0.8,
+	saturation = 1.0,
 }
-config.foreground_text_hsb = {
-	hue = 1.0,
-	saturation = 1.2,
-	brightness = 1.5,
-}
+-- config.foreground_text_hsb = {
+-- 	hue = 1.0,
+-- 	saturation = 1.2,
+-- 	brightness = 1.5,
+-- }
 config.keys = {
 	{ key = "9", mods = "CTRL", action = act.PaneSelect },
 	{
@@ -149,7 +154,7 @@ config.keys = {
 				window_background_image_hsb = {
 					brightness = brightness,
 					hue = 1.0,
-					saturation = 0.8,
+					saturation = 1.0,
 				},
 				window_background_image = bg_image,
 			})
@@ -164,7 +169,7 @@ config.keys = {
 				window_background_image_hsb = {
 					brightness = brightness,
 					hue = 1.0,
-					saturation = 0.8,
+					saturation = 1.0,
 				},
 				window_background_image = bg_image,
 			})
