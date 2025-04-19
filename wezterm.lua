@@ -5,13 +5,13 @@ local act = wezterm.action
 -- This will hold the configuration.
 -- This is where you actually apply your config choices
 
-local brightness = 0.3
+local brightness = 0.05
 
 -- Check if the OS is Windows or Unix-based
 local background_folder = wezterm.config_dir .. "/bg"
-local bg_image = wezterm.config_dir .. "/bg/k.jpg"
+local bg_image = wezterm.config_dir .. "/bg/m.jpg"
 local function pick_random_background(folder)
-	local file_name = string.char(math.random(string.byte("d"), string.byte("l")))
+	local file_name = string.char(math.random(string.byte("d"), string.byte("m")))
 	return folder .. "/" .. file_name .. ".jpg"
 end
 
@@ -44,8 +44,8 @@ config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.cell_width = 0.9
 
--- config.font = wezterm.font("ComicShannsMono Nerd Font")
-config.font = wezterm.font("Iosevka Nerd Font")
+config.font = wezterm.font("ComicShannsMono Nerd Font")
+-- config.font = wezterm.font("Iosevka Nerd Font")
 -- config.font = wezterm.font("Hack Nerd Font")
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior")
@@ -64,12 +64,12 @@ config.window_background_image_hsb = {
 	hue = 1.0,
 
 	-- You can adjust the saturation also.
-	saturation = 1.0,
+	saturation = 0.8,
 }
 -- config.foreground_text_hsb = {
 -- 	hue = 1.0,
 -- 	saturation = 1.2,
--- 	brightness = 1.5,
+-- 	brightness = 1.0,
 -- }
 config.keys = {
 	{ key = "9", mods = "CTRL", action = act.PaneSelect },
@@ -154,7 +154,7 @@ config.keys = {
 				window_background_image_hsb = {
 					brightness = brightness,
 					hue = 1.0,
-					saturation = 1.0,
+					saturation = 0.8,
 				},
 				window_background_image = bg_image,
 			})
@@ -169,7 +169,7 @@ config.keys = {
 				window_background_image_hsb = {
 					brightness = brightness,
 					hue = 1.0,
-					saturation = 1.0,
+					saturation = 0.8,
 				},
 				window_background_image = bg_image,
 			})
