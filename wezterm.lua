@@ -35,18 +35,20 @@ config.window_padding = {
 }
 config.window_close_confirmation = "NeverPrompt"
 config.term = "xterm-256color" -- Set the terminal type
--- config.color_scheme = "Tokyo Night"
+
 -- For example, changing the color scheme:
--- config.colors = require("cyberdream")
-config.color_scheme = "Shades of Purple (base16)"
+-- config.color_scheme = "Tokyo Night"
+config.colors = require("cyberdream")
+-- config.color_scheme = "Shades of Purple (base16)"
+
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.cell_width = 0.9
 
-config.font = wezterm.font("ComicShannsMono Nerd Font")
+-- config.font = wezterm.font("ComicShannsMono Nerd Font")
 -- config.font = wezterm.font("Iosevka Nerd Font")
--- config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font("Hack Nerd Font")
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior")
 config.font_size = 16
