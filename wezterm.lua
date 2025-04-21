@@ -15,16 +15,16 @@ local function pick_random_background(folder)
 	return folder .. "/" .. file_name .. ".jpg"
 end
 
-local gpus = wezterm.gui.enumerate_gpus()
-config.webgpu_preferred_adapter = gpus[2]
-config.front_end = "WebGpu"
--- config.front_end = "OpenGL"
--- config.prefer_egl = true
+-- local gpus = wezterm.gui.enumerate_gpus()
+-- config.webgpu_preferred_adapter = gpus[2]
+-- config.front_end = "WebGpu"
+config.front_end = "OpenGL"
+config.prefer_egl = true
 
+config.adjust_window_size_when_changing_font_size = false
 -- Performance Settings
 config.max_fps = 144
 config.animation_fps = 60
-config.cursor_blink_rate = 250
 
 -- Window Configuration
 config.window_padding = {
@@ -37,23 +37,23 @@ config.window_close_confirmation = "NeverPrompt"
 config.term = "xterm-256color" -- Set the terminal type
 
 -- For example, changing the color scheme:
--- config.color_scheme = "Tokyo Night"
-config.colors = require("cyberdream")
+config.color_scheme = "Tokyo Night"
+-- config.colors = require("cyberdream")
 -- config.color_scheme = "Shades of Purple (base16)"
 
 config.default_prog = { "pwsh.exe", "-NoLogo" }
-config.window_decorations = "RESIZE"
+config.window_decorations = "RESIZE | NONE"
 config.hide_tab_bar_if_only_one_tab = true
-config.cell_width = 0.9
+-- config.cell_width = 0.9
 
 -- config.font = wezterm.font("ComicShannsMono Nerd Font")
 -- config.font = wezterm.font("Iosevka Nerd Font")
-config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font("Hack Nerd Font", { weight = "Bold" })
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
--- config.font = wezterm.font("Fixedsys Excelsior")
+-- config.font = wezterm.font("Fixedsys Excelsior", { weight = "Bold" })
 config.font_size = 16
 -- config.line_height = 1.2
--- config.window_background_opacity = 0.95 -- Set window opacity to 95% for better readability
+-- config.window_background_opacity = 0.8 -- Set window opacity to 95% for better readability
 -- config.window_background_opacity = 0.5
 -- config.win32_system_backdrop = "Acrylic"
 config.window_background_image = bg_image
