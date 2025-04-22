@@ -46,12 +46,12 @@ config.window_decorations = "RESIZE | NONE"
 config.hide_tab_bar_if_only_one_tab = true
 -- config.cell_width = 0.9
 
--- config.font = wezterm.font("ComicShannsMono Nerd Font")
+config.font = wezterm.font("Comic Mono")
 -- config.font = wezterm.font("Iosevka Nerd Font")
-config.font = wezterm.font("Hack Nerd Font", { weight = "Bold" })
+-- config.font = wezterm.font("Hack Nerd Font", { weight = "Bold" })
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior", { weight = "Bold" })
-config.font_size = 16
+config.font_size = 18
 -- config.line_height = 1.2
 -- config.window_background_opacity = 0.8 -- Set window opacity to 95% for better readability
 -- config.window_background_opacity = 0.5
