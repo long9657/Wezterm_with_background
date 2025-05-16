@@ -43,7 +43,7 @@ config.color_scheme = "Tokyo Night"
 -- config.color_scheme = "Shades of Purple (base16)"
 
 config.default_prog = { "pwsh.exe", "-NoLogo" }
-config.window_decorations = "RESIZE | NONE"
+config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 -- config.cell_width = 0.9
 
@@ -52,7 +52,7 @@ config.font = wezterm.font("Comic Mono")
 -- config.font = wezterm.font("Hack Nerd Font", { weight = "Bold" })
 -- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior", { weight = "Bold" })
-config.font_size = 16
+config.font_size = 16.5
 config.allow_win32_input_mode = false
 -- config.line_height = 1.2
 -- config.window_background_opacity = 0.8 -- Set window opacity to 95% for better readability
