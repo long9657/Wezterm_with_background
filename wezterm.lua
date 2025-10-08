@@ -5,11 +5,11 @@ local act = wezterm.action
 -- This will hold the configuration.
 -- This is where you actually apply your config choices
 
-local brightness = 0.1
+local brightness = 0.05
 
 -- Check if the OS is Windows or Unix-based
 local background_folder = wezterm.config_dir .. "/bg"
-local bg_image = wezterm.config_dir .. "/bg/o.jpg"
+local bg_image = wezterm.config_dir .. "/bg/m.jpg"
 local function pick_random_background(folder)
 	local file_name = string.char(math.random(string.byte("d"), string.byte("o")))
 	return folder .. "/" .. file_name .. ".jpg"
@@ -39,21 +39,26 @@ config.term = "xterm-256color" -- Set the terminal type
 
 -- For example, changing the color scheme:
 -- config.color_scheme = "Tokyo Night"
-config.colors = require("cyberdream")
--- config.color_scheme = "Shades of Purple (base16)"
+-- config.colors = require("cyberdream")
+config.color_scheme = "Shades of Purple (base16)"
 
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
-config.cell_width = 0.9
+-- config.colors.cursor_bg = "green"
+-- config.colors.cursor_fg = "white"
+-- config.colors.cursor_border = "purple"
 
-config.font = wezterm.font("SeriousShanns Nerd Font")
+-- config.cell_width = 0.9
+
+-- config.font = wezterm.font("D2CodingLigature Nerd Font Mono")
+config.font = wezterm.font("Comic Mono")
 -- config.font = wezterm.font("Iosevka Nerd Font")
--- config.font = wezterm.font("Hack Nerd Font")
--- config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular", stretch = "Expanded" })
+-- config.font = wezterm.font("Hack Nerd Font Mono")
+-- config.font = wezterm.font("Inconsolata Nerd Font Mono", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior", { weight = "Bold" })
-config.font_size = 16.5
-config.custom_block_glyphs = false
+config.font_size = 16
+-- config.custom_block_glyphs = false
 config.allow_win32_input_mode = false
 -- config.line_height = 1.2
 -- config.window_background_opacity = 0.8 -- Set window opacity to 95% for better readability
