@@ -9,19 +9,19 @@ local brightness = 0.05
 
 -- Check if the OS is Windows or Unix-based
 local background_folder = wezterm.config_dir .. "/bg"
-local bg_image = wezterm.config_dir .. "/bg/m.jpg"
+local bg_image = wezterm.config_dir .. "/bg/l.jpg"
 local function pick_random_background(folder)
 	local file_name = string.char(math.random(string.byte("d"), string.byte("o")))
 	return folder .. "/" .. file_name .. ".jpg"
 end
 
+-- Gpu Setup
 -- local gpus = wezterm.gui.enumerate_gpus()
 -- config.webgpu_preferred_adapter = gpus[2]
 -- config.front_end = "WebGpu"
 config.front_end = "OpenGL"
 config.prefer_egl = true
 
-config.adjust_window_size_when_changing_font_size = false
 -- Performance Settings
 config.max_fps = 144
 config.animation_fps = 60
@@ -33,54 +33,61 @@ config.window_padding = {
 	top = "0",
 	bottom = "0",
 }
-
-config.window_close_confirmation = "NeverPrompt"
-config.term = "xterm-256color" -- Set the terminal type
-
--- For example, changing the color scheme:
--- config.color_scheme = "Tokyo Night"
--- config.colors = require("cyberdream")
-config.color_scheme = "Shades of Purple (base16)"
-
+config.adjust_window_size_when_changing_font_size = false
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 -- config.colors.cursor_bg = "green"
 -- config.colors.cursor_fg = "white"
 -- config.colors.cursor_border = "purple"
+config.window_close_confirmation = "NeverPrompt"
 
--- config.cell_width = 0.9
+config.term = "xterm-256color" -- Set the terminal type
 
+-- For example, changing the color scheme:
+config.color_scheme = "Tokyo Night"
+-- config.colors = require("cyberdream")
+-- config.color_scheme = "Shades of Purple (base16)"
+
+-- Font Setup
+-- config.font = wezterm.font("BlexMono Nerd Font Mono")
 -- config.font = wezterm.font("D2CodingLigature Nerd Font Mono")
-config.font = wezterm.font("Comic Mono")
+-- config.font = wezterm.font("Comic Mono")
 -- config.font = wezterm.font("Iosevka Nerd Font")
--- config.font = wezterm.font("Hack Nerd Font Mono")
+config.font = wezterm.font("Hack Nerd Font Mono")
 -- config.font = wezterm.font("Inconsolata Nerd Font Mono", { weight = "Regular", stretch = "Expanded" })
 -- config.font = wezterm.font("Fixedsys Excelsior", { weight = "Bold" })
-config.font_size = 16
+-- config.cell_width = 0.9
+config.font_size = 20
 -- config.custom_block_glyphs = false
 config.allow_win32_input_mode = false
 -- config.line_height = 1.2
--- config.window_background_opacity = 0.8 -- Set window opacity to 95% for better readability
+
+-- Transperancy
+config.window_background_opacity = 0.8 -- Set window opacity to 95% for better readability
 -- config.window_background_opacity = 0.5
 -- config.win32_system_backdrop = "Acrylic"
-config.window_background_image = bg_image
-config.window_background_image_hsb = {
-	-- Darken the background image by reducing it to 1/3rd
-	brightness = brightness,
 
-	-- You can adjust the hue by scaling its value.
-	-- a multiplier of 1.0 leaves the value unchanged.
-	hue = 1.0,
-
-	-- You can adjust the saturation also.
-	saturation = 0.8,
-}
+-- Background
+-- config.window_background_image = bg_image
+-- config.window_background_image_hsb = {
+-- 	-- Darken the background image by reducing it to 1/3rd
+-- 	brightness = brightness,
+--
+-- 	-- You can adjust the hue by scaling its value.
+-- 	-- a multiplier of 1.0 leaves the value unchanged.
+-- 	hue = 1.0,
+--
+-- 	-- You can adjust the saturation also.
+-- 	saturation = 0.8,
+-- }
 -- config.foreground_text_hsb = {
 -- 	hue = 1.0,
 -- 	saturation = 1.2,
 -- 	brightness = 1.0,
 -- }
+
+--Keymaps
 config.keys = {
 	{ key = "9", mods = "CTRL", action = act.PaneSelect },
 	{
@@ -98,6 +105,29 @@ config.keys = {
 			direction = "Down",
 			size = { Percent = 50 },
 		}),
+	},
+	{
+		key = "d",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action_callback(function(window, pane)
+			local tab = window:active_tab()
+			local panes = tab:panes()
+
+			if #panes == 1 then
+				-- only one pane: create left split
+				pane:split({
+					direction = "Left",
+					size = 0.3,
+				})
+				-- refocus original (right) pane
+				window:perform_action(wezterm.action.ActivatePaneDirection("Right"), pane)
+			else
+				-- multiple panes: toggle off (close left one)
+				-- move focus left, close it, then return to right
+				window:perform_action(wezterm.action.ActivatePaneDirection("Left"), pane)
+				window:perform_action(wezterm.action.CloseCurrentPane({ confirm = false }), pane)
+			end
+		end),
 	},
 	-- {
 	-- 	key = "H",
@@ -186,5 +216,6 @@ config.keys = {
 		end),
 	},
 }
+
 -- and finally, return the configuration to wezterm
 return config
